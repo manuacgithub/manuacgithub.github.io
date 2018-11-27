@@ -99,7 +99,7 @@ var AddorremoveComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".form-control.padd{\r\n    padding: 16px;\r\n    font-size: 16px;\r\n}"
 
 /***/ }),
 
@@ -110,7 +110,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"animation_wrapper container\">\n  <h2>Animation</h2>\n  <input type=\"text\" #Inputitem\n  class=\"form-control\"\n  (keyup.enter)=\"addItem(Inputitem)\">\n  <div  *ngIf=\"items\" \n  class=\"list-group\">\n    <button type=\"button\" \n    *ngFor=\"let item of items\"\n    class=\"list-group-item\"\n    (click)=\"removeItem(item)\">\n    {{item}}\n    </button>\n  </div>\n</div>\n"
+module.exports = "\n<div class=\"animation_wrapper container\">\n  <h2>Animation</h2>\n    <input type=\"text\" #Inputitem\n    class=\"form-control padd\"\n    (keyup.enter)=\"addItem(Inputitem)\">\n    <div  *ngIf=\"items\" \n    class=\"list-group\">\n      <button type=\"button\" \n      @fade1 \n      *ngFor=\"let item of items\"\n      class=\"list-group-item\"\n      (click)=\"removeItem(item)\">\n      {{item}}\n      </button>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -125,12 +125,14 @@ module.exports = "\n<div class=\"animation_wrapper container\">\n  <h2>Animation
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationComponent", function() { return AnimationComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 var AnimationComponent = /** @class */ (function () {
     function AnimationComponent() {
@@ -152,7 +154,19 @@ var AnimationComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-animation',
             template: __webpack_require__(/*! ./animation.component.html */ "./src/app/animation/animation.component.html"),
-            styles: [__webpack_require__(/*! ./animation.component.css */ "./src/app/animation/animation.component.css")]
+            styles: [__webpack_require__(/*! ./animation.component.css */ "./src/app/animation/animation.component.css")],
+            animations: [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('fade1', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('void => *', [
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({ opacity: 0 }),
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])(2000)
+                    ]),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('* => void', [
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])(2000),
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({ opacity: 0 })
+                    ])
+                ])
+            ]
         })
     ], AnimationComponent);
     return AnimationComponent;
